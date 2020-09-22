@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 
-<!-- Add a title -->
-<h1>First html document</h1>
+<!-- Add a svg area, empty -->
+<svg id="dataviz_area" height=200 width=450></svg>
 
-<!-- Add a bit of text -->
-<p>This is my first sentence</p>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
 
-<!-- Add a link -->
-<p>This is <a href="https://www.d3-graph-gallery.com">a link to the d3 graph gallery</a></p>
+<script>
+    var svg = d3.select("#dataviz_area")
+    svg.append("circle")
+      .attr("cx", -10).attr("cy", 2).attr("r", 40).style("fill", "blue");
+    svg.append("circle")
+      .attr("cx", 140).attr("cy", 70).attr("r", 40).style("fill", "red");
+    svg.append("circle")
+      .attr("cx", 300).attr("cy", 100).attr("r", 40).style("fill", "green");
+</script>

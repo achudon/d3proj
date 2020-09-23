@@ -7,11 +7,16 @@
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <script>
-    var svg = d3.select("#dataviz_area")
-    svg.append("circle")
-      .attr("cx", -10).attr("cy", 2).attr("r", 40).style("fill", "blue");
-    svg.append("circle")
-      .attr("cx", 140).attr("cy", 70).attr("r", 40).style("fill", "red");
-    svg.append("circle")
-      .attr("cx", 300).attr("cy", 100).attr("r", 40).style("fill", "green");
+  var margin = {top: 10, right: 40, bottom: 30, left: 30},
+  width = 450 - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
+
+  var sVg = d3.select("#dataviz_area")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + 100 + "," + 100 + ")")
+    .append("circle")
+      .attr("cx", 10).attr("cy", 100).attr("r", 40).style("fill", "blue");
 </script>

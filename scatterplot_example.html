@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!-- Add a svg area, empty -->
+<div id="scatter_area"></div>
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<script>
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 40, bottom: 30, left: 30},
+    width = 450 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+//append svg object
+var svg = d3.select("#scatter_area")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", 
+                "translate(" + margin.left + "," + margin.top + ")");
+
+//create data
+var data = [{x:10, y:20}, {x:40, y:90}, {x:80, y:50}];
+
+//x scale and axis
+var x = d3.scaleLinear()
+    .domain([0, 100])
+    .range([0,width]);
+
+svg 
+    .append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x))
+
+//y scale and ais
+var y = d3.scaleLinear()
+    .domain([0,100])
+    .range([height, 0]);
+
+svg
+    .append('g')
+    .call(d3.axisLeft(y))
+
+svg
+    .selectAll("whatever")
+    .data(data)
+    .enter()
+    .append("circle")
+        .attr("cx", function(d){ return x(d.x)})
+        .attr("cy", function(d){return y(d.y)})
+        .attr("r", 7)
+        .style("fill", "limegreen")
+</script>

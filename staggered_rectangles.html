@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+    rect {
+        fill: limegreen
+    }
+</style>
+
+<body>
+    <svg width="700" height="190">
+        <g transform="translate(30, 20)">
+            <rect width="30" height="30" y="0"></rect>
+            <rect width="30" height="30" y="40"></rect>
+            <rect width="30" height="30" y="80"></rect>
+            <rect width="30" height="30" y="120"></rect>
+        </g>
+    </svg>
+
+    <div>
+        <button onClick="update();">Click to update rect elements</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <script>
+        function update() {
+            d3.selectAll('rect')
+                .attr('x', function(d, i) {
+                    console.log(d3.select(this))
+                    console.log(i)
+                    return i * 40
+                })
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <!-- <svg id='viz' width='600', height='100'>
+        <g transform='translate(70,20)'>  
+            <g class='item' transform="translate(0, 0)"></g>
+            <g class='item' transform="translate(120, 0)"></g>
+            <g class='item' transform="translate(240, 0)"></g>
+            <!-- <g class='item'></g>
+            <g class='item'></g>
+            <g class='item'></g> 
+        </g>
+    </svg> -->
+    <svg width="760" height="140">
+        <g transform="translate(70, 70)">
+          <circle r="40" />
+          <circle r="40" cx="120" />
+          <circle r="40" cx="240" />
+          <circle r="40" cx="360" />
+          <circle r="40" cx="480" />
+          <circle r="40" cx="620" />
+        </g>
+      </svg>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+<script>
+
+    d3.selectAll('g.item')
+        .each(addNumberedCircle)
+
+    function addNumberedCircle(d, i) {
+        d3.select(this)
+            .append('circle')
+            .attr('r', 5)
+            .attr('fill', 'orange')
+            .attr('cx', i * 10)
+
+        d3.select(this)
+            .append('text')
+            .text(i+1)
+            .attr('y', 50)
+            .attr('x', 30)
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -20,39 +20,51 @@
     
 
 <body>
-    <svg id='content' transform='translate(70,70)'>
+    <svg id='content' transform='translate(70,70)' width='800'>
         <circle class='existing' r='20', cx='20', cy='20'></circle>
         <circle class='existing' r='20', cx='70', cy='20'></circle>
         <circle class='existing' r='20', cx='120', cy='20'></circle>
     </svg>
 
     <div id='menu'>
-        <button onclick=update(myData)>Click to Update</button>
+        <button onclick=update()>Click to Update</button>
     </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
 <script>
     var myData = [1, 2, 3, 4, 5];
 
-    function update(data) {
+    function changemyData() {
+        var numDataElements = Math.floor(Math.random() * 11);
+
+        myData = [];
+        var i;
+        for (i = 0; i < numDataElements; i++) {
+            myData[i] = i;
+        }
+
+        console.log(myData);
+    }
+
+    function update() {
+        changemyData();
         var u = d3.select('#content')
             .selectAll('circle')
-            .data(data)
+            .data(myData)
             .attr('class', 'existing')
 
         u.enter()
             .append('circle')
             .attr('r', '20')
-            .attr('fill', 'hotpink')
+            .attr('class', 'new')
             .attr('cx', function(d, i){
-                console.log(i)
-                console.log (i * 20 + 50)
-                return i * 20 + 50
+                return i * 50 + 20
             })
             .attr('cy', '20')
             .merge(u)
-            console.log('entered')
-        
+
+        u.exit().remove();
+        console.log('updated');
     }
 </script>
 
